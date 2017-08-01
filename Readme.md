@@ -16,8 +16,8 @@ Host IP(s)
 Total RAM
 
 Create info.yml file with 4 tasks 
-<image src /pictures/2.png>
-<image src /pictures/3.png>
+<img src="/pictures/2.png">
+<img src="/pictures/3.png">
 
 
 
@@ -29,7 +29,7 @@ Software installation requirements:
 - Tomcat installation folder (CATALINA_HOME) is /opt/tomcat/$version, where $version is the version of tomcat defined in playbook
 - Java can be installed from CentOS Repositories
 
-<image src /pictures/5.png>
-<image src /pictures/6.png>
-<image src /pictures/7.png>
-<image src /pictures/4.png>
+<img src="/pictures/5.png">
+<img src="/pictures/6.png">
+<img src="/pictures/7.png">
+<img src="/pictures/4.png">
