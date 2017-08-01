@@ -5,7 +5,7 @@
 - Remote ssh login username
 - Connection type
 
-<image src /pictures/1.png>
+<img src="/pictures/1.png">
 
 ### Test ansible connectivity to the VM with ad-hoc command: 
 
