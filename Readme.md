@@ -1,6 +1,5 @@
 # Ansible 
 
-
 ### Install Ansible v2.3.1 with python pip. Report details where ansible has been installed.
 <img src="/pictures/8.png">
 <img src="/pictures/9.png">
