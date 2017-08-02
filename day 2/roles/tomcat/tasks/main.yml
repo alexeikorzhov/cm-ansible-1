@@ -1,0 +1,60 @@
+---
+# tasks file for tomcat
+
+  - stat: path=/home/vagrant/apache-tomcat-{{tomcat_version}}.tar.gz
+    register: arch_file
+  - name: Downloading tomcat
+#  - shell: echo Downloading tomcat archive version 8.5.9
+    get_url:
+      url:  '{{tomcat_url}}'
+      dest: /home/vagrant/
+    when: arch_file.stat.exists == false
+   
+  - name: Creating a new group for tomcat user
+#  - shell: Creating a new group for tomcat user
+    group:
+      name: '{{tomcat_group}}'
+      state: present
+
+  - name: Creating a new user tor tomcat service
+#  - shell: Creating a new user for tomcat service
+    user:
+      name: '{{tomcat_user}}'
+      comment: "tomcat user"
+      group: '{{tomcat_group}}'
+      state: present
+
+  - stat: path='{{tomcat_home}}'
+    register: folder_file
+  - name: Creating a new directory for tomcat
+#  - shell: Creating a new directory for tomcat
+    file:
+      path: '{{tomcat_home}}'
+      state: directory
+      owner: '{{tomcat_user}}'
+      group: '{{tomcat_group}}'
+      mode: 0775
+    when: folder_file.stat.exists == false
+
+  - stat: path=/home/vagrant/apache-tomcat-{{tomcat_version}}
+    register: tomcat_arch
+  - name: Unarchivaiting tomcat
+#  - shell: Unarchivaiting tomcat
+    unarchive:
+      src: /home/vagrant/apache-tomcat-{{tomcat_version}}.tar.gz
+      dest: /home/vagrant/
+      remote_src: True
+    when: tomcat_arch.stat.exists == false
+
+  - name : Copying tomcat to /opt/tomcat/$version
+#  - shell: Copying tomcat to /opt/tomcat/$version
+    shell: cp -R /home/vagrant/apache-tomcat-{{tomcat_version}}/* {{tomcat_home}} && chown -R tomcat_as:tomcat_as_group /opt/tomcat/
+
+  - name: Changins tomcat service and strat it
+#  - shell: Using template module
+    template: 
+      src: tomcat.service.j2d
+      dest: /etc/systemd/system/tomcat.service
+    notify:
+      start_tomcat
+

@@ -1,0 +1,8 @@
+---
+# defaults file for tomcat
+
+  tomcat_ver: 8
+  tomcat_subversion: 0.45
+  tomcat_group: tomcat_as_group
+  tomcat_user: tomcat_as
+  tomcat_version: '{{tomcat_ver}}.{{tomcat_subversion}}'

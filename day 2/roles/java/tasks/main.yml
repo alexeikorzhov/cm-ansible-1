@@ -1,0 +1,8 @@
+---
+# tasks file for java
+
+  - name: Installing Java
+#  - shell: echo Java installation for tomcat
+    yum:
+      name: java-{{java_version}}-openjdk-devel.x86_64
+      state: present

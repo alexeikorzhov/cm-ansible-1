@@ -1,0 +1,22 @@
+---
+# tasks file for tomcat_test
+
+  - name: Check tomcat version
+    shell: sh /opt/tomcat/8.0.45/bin/version.sh 
+    register: tomcat_v
+  - debug: var=tomcat_v 
+
+  - name: Check running tomcat service
+    shell: systemctl status tomcat
+    register: tomcat_run
+  - debug: var=tomcat_run  
+
+  - name: CURL check to tomcat
+    shell: curl -l http://192.168.56.10:8080
+    register: curl_v
+  - debug: var=curl_v    
+
+  - name: Check wget
+    shell: wget http://192.168.56.10:8080
+    register: wget_v
+  - debug: var=wget_v   

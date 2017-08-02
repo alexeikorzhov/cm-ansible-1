@@ -1,0 +1,11 @@
+---
+# tasks file for nginx_test
+  - name: Check Nginx version
+    shell: nginx -v
+    register: nginx_v
+  - debug: var=nginx_v    
+
+  - name: Check running nginx service
+    shell: systemctl status nginx
+    register: nginx_run
+  - debug: var=nginx_run  

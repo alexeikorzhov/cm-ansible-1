@@ -1,0 +1,17 @@
+---
+# tasks file for nginx
+
+  - name: Downloading and installing nginx
+#  - shell: echo Downloading nginx
+    yum:
+      name: nginx
+      state: present
+
+  - name: Making proxy from port 80 to tomcat:8080 and starting service
+#  - shell: Making proxy
+    template: 
+      src: nginx.conf.j2d
+      dest: /etc/nginx/nginx.conf       
+    notify: 
+      start_nginx
+

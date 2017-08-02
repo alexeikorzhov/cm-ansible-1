@@ -1,0 +1,24 @@
+#!/usr/bin/env ansible-playbook ./hello.yml -i localhost, -c local -vv
+
+- name: Provisioning tomcat & nginx
+  hosts: pet
+
+  become: true
+  become_method: sudo
+
+  roles:
+    - role: java
+    - role: tomcat
+    - role: nginx
+
+- name: Checking services
+  hosts: pet
+
+  become: true
+  become_method: sudo
+
+  roles:
+    - role: tomcat_test
+    - role: nginx_test
+    - role: java_test 
+    

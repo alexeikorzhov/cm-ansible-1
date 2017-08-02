@@ -1,0 +1,6 @@
+---
+# vars file for tomcat
+
+  tomcat_url: "http://archive.apache.org/dist/tomcat/tomcat-{{tomcat_ver}}/v{{tomcat_version}}/bin/apache-tomcat-{{tomcat_version}}.tar.gz"
+  tomcat_home: "/opt/tomcat/{{tomcat_version}}"
+
